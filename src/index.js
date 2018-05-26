@@ -8,11 +8,15 @@ if ("serviceWorker" in navigator) {
 }
 
 document.getElementById("app").innerHTML = `
-<h1>Hello Workbox-PWA!</h1>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<h1 class="text-center heading">Hello Workbox-PWA!</h1>
 <div>
-  Look
-  <img src="https://www.w3schools.com/w3css/img_lights.jpg"/>
-  <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>
-  for more info about Parcel.
+
+  <img  class="img-banner" src="src/images/workbox-pwa.png"/>
+</div>
+</div>
+</div>
 </div>
 `;
