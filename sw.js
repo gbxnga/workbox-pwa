@@ -1,4 +1,4 @@
-console.log('new service worker')
+console.log('new service worker installed')
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.2.0/workbox-sw.js');
 
 if (workbox) {
@@ -37,21 +37,12 @@ if (workbox) {
     })
   );
 
-  workbox.routing.registerRoute(
-    // Cache index page
-    /.*\//,
-    // Fetch from the network first
-    workbox.strategies.networkFirst({
-      // Use a custom cache name
-      cacheName: 'skeleton-cache',
-      plugins: [
-        new workbox.expiration.Plugin({
-          // Cache for a maximum of a week
-          maxAgeSeconds: 7 * 24 * 60 * 60,
-        })
-      ],
-    })
-  );
+
+  const matchCb = ({url, event}) => {
+    return (url.pathname === '/workbox-pwa/');
+  };
+
+  workbox.routing.registerRoute(matchCb, workbox.strategies.networkFirst());
 
 } else {
   console.log(`Boo! Workbox didn't load 😬`);
